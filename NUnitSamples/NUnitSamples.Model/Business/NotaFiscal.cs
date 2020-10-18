@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NUnitSamples.Model.Exceptions;
+using NUnitSamples.Model.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +16,6 @@ namespace NUnitSamples.Model.Business
         }
 
         private List<ItemNotaFiscal> Itens;
-
-
 
         public Fornecedor Fornecedor { get; set; }
 
@@ -52,8 +52,7 @@ namespace NUnitSamples.Model.Business
 
              public double CalcularValorTotalNotaFiscal()
              {
-                 if(Fornecedor == null)
-                     throw new FornecedorNaoInformadoException();
+                 if(Fornecedor == null) throw new FornecedorNaoInformadoException();
 
                  double total = 0;
 
@@ -61,15 +60,9 @@ namespace NUnitSamples.Model.Business
                      total = total + item.CalcularSubTotal();
                  }
 
-                 double pecentualImposto =
-                   ConfiguracaoImpostoRepository.GetPercentual
-                    ImpostoPorClassificacao
-                   (Fornecedor.Classificacao);
+                 double pecentualImposto = ConfiguracaoImpostoRepository.GetPercentualImpostoPorClassificacao(Fornecedor.Classificacao);
 
                  return total + (total* pecentualImposto / 100);
              }
          }
      }
-
-    }
-}
