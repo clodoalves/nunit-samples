@@ -31,6 +31,5 @@ msbuild.wrn
 **/.vs
 **/bin
 **/obj
-**/Properties
 **/packages
 
