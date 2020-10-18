@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NUnitSamples.Test.Business
 {
     [TestFixture]
-    public class TesteItemNotaFiscal
+    public class ItemNotaFiscalTests
     {
         [Test]
         public void TestCalcularSubTotal()

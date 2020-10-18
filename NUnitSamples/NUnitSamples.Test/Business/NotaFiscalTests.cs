@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace NUnitSamples.Test.Business
 {
     [TestFixture]
-    public class TesteNotaFiscal
+    public class NotaFiscalTests
     {
         private const double VALOR_TOTAL_NOTAFISCAL = 1350;
         private NotaFiscal notaFiscal = null;
