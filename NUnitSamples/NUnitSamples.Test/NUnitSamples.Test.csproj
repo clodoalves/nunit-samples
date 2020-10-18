@@ -48,13 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\NUnitSamples.Tests\Business\TesteItemNotaFiscal.cs">
-      <Link>Business\TesteItemNotaFiscal.cs</Link>
-    </Compile>
-    <Compile Include="..\NUnitSamples.Tests\Repository\TesteConfiguracaoImpostoRepository.cs">
-      <Link>Repository\TesteConfiguracaoImpostoRepository.cs</Link>
-    </Compile>
+    <Compile Include="Business\TesteItemNotaFiscal.cs" />
+    <Compile Include="Business\TesteNotaFiscal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\TesteConfiguracaoImpostoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

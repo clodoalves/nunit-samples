@@ -19,50 +19,49 @@ namespace NUnitSamples.Model.Business
 
         public Fornecedor Fornecedor { get; set; }
 
-        public ItemNotaFiscal AdicionarItem
-        (int codigo, string descricao,
-         double quantidade, double valorUnitario)
+        public ItemNotaFiscal AdicionarItem (int codigo, string descricao, double quantidade, double valorUnitario)
         {
-                 ItemNotaFiscal item = new ItemNotaFiscal(this);
-                 item.Codigo = codigo;
-                 item.Descricao = descricao;
-                 item.Quantidade = quantidade;
-                 item.ValorUnitario = valorUnitario;
+            ItemNotaFiscal item = new ItemNotaFiscal(this);
+            item.Codigo = codigo;
+            item.Descricao = descricao;
+            item.Quantidade = quantidade;
+            item.ValorUnitario = valorUnitario;
 
-                 Itens.Add(item);
+            Itens.Add(item);
 
-                 return item;
-             }
+            return item;
+        }
 
-             public bool VerificaItemExisteNaNotaFiscal(int codigo)
-             {
-                 ItemNotaFiscal itemLocalizado = Itens.Find
-                 (x => x.Codigo == codigo);
+        public bool VerificaItemExisteNaNotaFiscal(int codigo)
+        {
+            ItemNotaFiscal itemLocalizado = Itens.Find
+            (x => x.Codigo == codigo);
 
-                 return itemLocalizado != null;
-             }
+            return itemLocalizado != null;
+        }
 
-             public void RemoverItem(int codigo)
-             {
-                 ItemNotaFiscal itemLocalizado = Itens.Find
-                 (x => x.Codigo == codigo);
-                 if (itemLocalizado != null)
-                     Itens.Remove(itemLocalizado);
-             }
+        public void RemoverItem(int codigo)
+        {
+            ItemNotaFiscal itemLocalizado = Itens.Find
+            (x => x.Codigo == codigo);
+            if (itemLocalizado != null)
+                Itens.Remove(itemLocalizado);
+        }
 
-             public double CalcularValorTotalNotaFiscal()
-             {
-                 if(Fornecedor == null) throw new FornecedorNaoInformadoException();
+        public double CalcularValorTotalNotaFiscal()
+        {
+            if (Fornecedor == null) throw new FornecedorNaoInformadoException();
 
-                 double total = 0;
+            double total = 0;
 
-                 foreach(ItemNotaFiscal item in Itens){
-                     total = total + item.CalcularSubTotal();
-                 }
+            foreach (ItemNotaFiscal item in Itens)
+            {
+                total += item.CalcularSubTotal();
+            }
 
-                 double pecentualImposto = ConfiguracaoImpostoRepository.GetPercentualImpostoPorClassificacao(Fornecedor.Classificacao);
+            double percentualImposto = ConfiguracaoImpostoRepository.GetPercentualImpostoPorClassificacao(Fornecedor.Classificacao);
 
-                 return total + (total* pecentualImposto / 100);
-             }
-         }
-     }
+            return total + (total * percentualImposto / 100);
+        }
+    }
+}
