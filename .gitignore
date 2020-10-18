@@ -32,4 +32,5 @@ msbuild.wrn
 **/bin
 **/obj
 **/Properties
+**/packages
 
